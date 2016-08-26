@@ -1,0 +1,1 @@
+json.array! @tipo_hospedajes, partial: 'tipo_hospedajes/tipo_hospedaje', as: :tipo_hospedaje

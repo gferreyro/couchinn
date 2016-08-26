@@ -1,0 +1,30 @@
+<h1>Lista de tipos de hospedajes</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Descripcion</th>
+      <th>Estado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tipo_hospedajes.each do |tipo_hospedaje| %>
+      <tr>
+        <td><%= tipo_hospedaje.descripcion %></td>
+        <td><%= tipo_hospedaje.estado %></td>
+        <td><%= link_to 'Show', tipo_hospedaje %></td>
+        <td><%= link_to 'Edit', edit_tipo_hospedaje_path(tipo_hospedaje) %></td>
+        
+        <td><%= link_to 'Destroy',tipo_hospedaje,method: :delete%></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Tipo hospedaje', new_tipo_hospedaje_path %></br>
+<%= link_to 'volver a inicio', welcome_index_path%>

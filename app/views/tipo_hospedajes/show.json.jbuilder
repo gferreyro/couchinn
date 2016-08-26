@@ -1,0 +1,1 @@
+json.partial! "tipo_hospedajes/tipo_hospedaje", tipo_hospedaje: @tipo_hospedaje
