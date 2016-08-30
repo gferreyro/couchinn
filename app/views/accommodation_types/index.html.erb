@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Descripcion</th>
-      <th>Activo</th>
+      <th>Estado</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,6 +17,14 @@
         <td><%= link_to 'Show', accommodation_type %></td>
         <td><%= link_to 'Edit', edit_accommodation_type_path(accommodation_type) %></td>
         <td><%= link_to 'Destroy', accommodation_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <% if (accommodation_type.activo?)%>
+            <%= link_to 'Desactivar',desactivar_accommodation_type_path(accommodation_type)%>
+            <% else%>
+            <%= link_to 'Activar',activar_accommodation_type_path(accommodation_type)%>
+            <%end%>
+          </td>
+
       </tr>
     <% end %>
   </tbody>

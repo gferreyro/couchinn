@@ -23,4 +23,11 @@ ActiveRecord::Schema.define(version: 20160830212044) do
     t.datetime "updated_at"
   end
 
+  create_table "tipo_hospedajes", force: true do |t|
+    t.string   "descripcion"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "estado"
+  end
+
 end

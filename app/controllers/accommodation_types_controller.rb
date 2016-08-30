@@ -1,5 +1,5 @@
 class AccommodationTypesController < ApplicationController
-  before_action :set_accommodation_type, only: [:show, :edit, :update, :destroy]
+  before_action :set_accommodation_type, only: [:show, :edit, :update, :destroy,:desactivar,:activar]
 
   # GET /accommodation_types
   # GET /accommodation_types.json
@@ -49,6 +49,16 @@ class AccommodationTypesController < ApplicationController
         format.json { render json: @accommodation_type.errors, status: :unprocessable_entity }
       end
     end
+  end
+  def desactivar
+      @accommodation_type.activo=false
+      @accommodation_type.save
+       redirect_to accommodation_types_url, notice: 'Accommodation type was successfully updated.'
+  end
+  def activar
+      @accommodation_type.activo=true
+      @accommodation_type.save
+       redirect_to accommodation_types_url, notice: 'Accommodation type was successfully updated.'
   end
 
   # DELETE /accommodation_types/1
