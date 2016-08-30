@@ -13,23 +13,16 @@
     <% @accommodation_types.each do |accommodation_type| %>
       <tr>
         <td><%= accommodation_type.descripcion %></td>
-        <td><%= accommodation_type.activo %></td>
-<<<<<<< HEAD
-        <td><%= link_to 'Show', accommodation_type %></td>
-        <td><%= link_to 'Edit', edit_accommodation_type_path(accommodation_type) %></td>
-        <td><%= link_to 'Destroy', accommodation_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= accommodation_type.activo %></td>       
         <td>
           <% if (accommodation_type.activo?)%>
             <%= link_to 'Desactivar',desactivar_accommodation_type_path(accommodation_type)%>
             <% else%>
             <%= link_to 'Activar',activar_accommodation_type_path(accommodation_type)%>
             <%end%>
-          </td>
-
-=======
+        </td>
         <td><%= link_to 'Editar', edit_accommodation_type_path(accommodation_type) %></td>
-      <td><%= link_to 'Eliminar', accommodation_type, method: :delete, data: { confirm: '¿Esta seguro?' } %></td>
->>>>>>> origin/master
+        <td><%= link_to 'Eliminar', accommodation_type, method: :delete, data: { confirm: '¿Esta seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
