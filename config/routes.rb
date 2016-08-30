@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :accommodation_types
+
   resources :tipo_hospedajes
 
   get 'welcome/index'

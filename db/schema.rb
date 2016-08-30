@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160826022916) do
+ActiveRecord::Schema.define(version: 20160830212044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "tipo_hospedajes", force: true do |t|
+  create_table "accommodation_types", force: true do |t|
     t.string   "descripcion"
+    t.boolean  "activo",      default: true
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "estado"
   end
 
 end
