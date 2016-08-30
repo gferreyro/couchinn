@@ -1,3 +1,4 @@
 class AccommodationType < ActiveRecord::Base
   default_scope -> { order("descripcion") }
-end
+  validates :descripcion , presence: true,  uniqueness: {case_sensitive: false ,message: "ya esta este tipo"}
+  end
