@@ -14,6 +14,7 @@
       <tr>
         <td><%= accommodation_type.descripcion %></td>
         <td><%= accommodation_type.activo %></td>
+<<<<<<< HEAD
         <td><%= link_to 'Show', accommodation_type %></td>
         <td><%= link_to 'Edit', edit_accommodation_type_path(accommodation_type) %></td>
         <td><%= link_to 'Destroy', accommodation_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -25,6 +26,10 @@
             <%end%>
           </td>
 
+=======
+        <td><%= link_to 'Editar', edit_accommodation_type_path(accommodation_type) %></td>
+      <td><%= link_to 'Eliminar', accommodation_type, method: :delete, data: { confirm: '¿Esta seguro?' } %></td>
+>>>>>>> origin/master
       </tr>
     <% end %>
   </tbody>
