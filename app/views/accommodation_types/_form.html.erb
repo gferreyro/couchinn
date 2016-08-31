@@ -1,7 +1,7 @@
 <%= form_for(@accommodation_type) do |f| %>
   <% if @accommodation_type.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@accommodation_type.errors.count, "Error") %> : No se puede guardar</h2>
+      <h2><%= pluralize(@accommodation_type.errors.count, "Error") %>: No se puede guardar</h2>
 
       <ul>
       <% @accommodation_type.errors.full_messages.each do |message| %>
@@ -12,14 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :descripcion%><br>
+    <%= f.label :descripcion %><br>
     <%= f.text_field :descripcion %>
   </div>
   <div class="field">
-    <%= f.label :activo %><br>
+    <%= f.label :activo %>
     <%= f.check_box :activo %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Guardar", class: "btn btn-primary"%>
+    <%= link_to 'Cancelar', accommodation_types_path, class: "btn btn-default"%>
   </div>
 <% end %>

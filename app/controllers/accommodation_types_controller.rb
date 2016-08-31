@@ -28,7 +28,7 @@ class AccommodationTypesController < ApplicationController
 
     respond_to do |format|
       if @accommodation_type.save
-        format.html { redirect_to @accommodation_type, notice: 'Accommodation type was successfully created.' }
+        format.html { redirect_to @accommodation_type, notice: 'Tipo de hospedaje creado correctamente.' }
         format.json { render :show, status: :created, location: @accommodation_type }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class AccommodationTypesController < ApplicationController
   def update
     respond_to do |format|
       if @accommodation_type.update(accommodation_type_params)
-        format.html { redirect_to @accommodation_type, notice: 'Accommodation type was successfully updated.' }
+        format.html { redirect_to @accommodation_type, notice: 'Tipo de hospedaje modificado correctamente.' }
         format.json { render :show, status: :ok, location: @accommodation_type }
       else
         format.html { render :edit }
@@ -53,12 +53,12 @@ class AccommodationTypesController < ApplicationController
   def desactivar
       @accommodation_type.activo=false
       @accommodation_type.save
-       redirect_to accommodation_types_url, notice: 'Accommodation type was successfully updated.'
+       redirect_to accommodation_types_url, notice: 'Tipo de hospedaje modificado correctamente.'
   end
   def activar
       @accommodation_type.activo=true
       @accommodation_type.save
-       redirect_to accommodation_types_url, notice: 'Accommodation type was successfully updated.'
+       redirect_to accommodation_types_url, notice: 'Tipo de hospedaje modificado correctamente.'
   end
 
   # DELETE /accommodation_types/1
@@ -66,7 +66,7 @@ class AccommodationTypesController < ApplicationController
   def destroy
     @accommodation_type.destroy
     respond_to do |format|
-      format.html { redirect_to accommodation_types_url, notice: 'Accommodation type was successfully destroyed.' }
+      format.html { redirect_to accommodation_types_url, notice: 'Tipo de hospedaje eliminado correctamente.' }
       format.json { head :no_content }
     end
   end
