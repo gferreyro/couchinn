@@ -1,0 +1,29 @@
+<%= form_for(@accomodation) do |f| %>
+  <% if @accomodation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@accomodation.errors.count, "error") %> prohibited this accomodation from being saved:</h2>
+
+      <ul>
+      <% @accomodation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :titulo %><br>
+    <%= f.text_area :titulo %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br>
+    <%= f.text_area :descripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :imagen %><br>
+    <%= f.text_area :imagen %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

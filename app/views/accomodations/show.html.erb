@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @accomodation.titulo %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @accomodation.descripcion %>
+</p>
+
+<p>
+  <strong>Imagen:</strong>
+  <%= @accomodation.imagen %>
+</p>
+
+<%= link_to 'Edit', edit_accomodation_path(@accomodation) %> |
+<%= link_to 'Back', accomodations_path %>
