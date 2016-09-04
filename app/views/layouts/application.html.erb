@@ -7,13 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
   <table class="table table-hover">
   <td><%= link_to "Tipos de hospedajes",accommodation_types_path%></td>
   <td><%= link_to 'Nuevo Hospedaje', new_accomodation_path %></td>
   </table>
-
-
-
 <nav class="minavbar">
   <div class="container-fluid minavbar">
     <div class="navbar-header ">
@@ -25,6 +23,5 @@
 </nav>
 
 <%= yield %>
-
 </body>
 </html>
