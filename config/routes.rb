@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  
   resources :accomodations
-
+  devise_for :users
   resources :accommodation_types do
     get :desactivar,on: :member
     get :activar,on: :member
