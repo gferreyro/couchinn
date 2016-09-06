@@ -29,7 +29,7 @@ before_filter :authenticate_user!, except: [:index]
 
     respond_to do |format|
       if @accomodation.save
-        format.html { redirect_to @accomodation, notice: 'Accomodation was successfully created.' }
+        format.html { redirect_to @accomodation, notice: 'El hospedaje fue creado correctamente.' }
         format.json { render :show, status: :created, location: @accomodation }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ before_filter :authenticate_user!, except: [:index]
   def update
     respond_to do |format|
       if @accomodation.update(accomodation_params)
-        format.html { redirect_to @accomodation, notice: 'Accomodation was successfully updated.' }
+        format.html { redirect_to @accomodation, notice: 'El hospedaje fue modificado correctamente.' }
         format.json { render :show, status: :ok, location: @accomodation }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ before_filter :authenticate_user!, except: [:index]
   def destroy
     @accomodation.destroy
     respond_to do |format|
-      format.html { redirect_to accomodations_url, notice: 'Accomodation was successfully destroyed.' }
+      format.html { redirect_to accomodations_url, notice: 'El hospedaje fue eliminado correctamente.' }
       format.json { head :no_content }
     end
   end

@@ -1,7 +1,7 @@
 <%= form_for(@accomodation) do |f| %>
   <% if @accomodation.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@accomodation.errors.count, "error") %> prohibited this accomodation from being saved:</h2>
+      <h2><%= pluralize(@accomodation.errors.count, "error") %> no permiten guardar:</h2>
 
       <ul>
       <% @accomodation.errors.full_messages.each do |message| %>
@@ -24,6 +24,7 @@
     <%= f.text_area :imagen %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Guardar', class: "btn btn-primary"%>
+    <%= link_to 'Cancelar', accomodations_path, class: "btn btn-default"%>
   </div>
 <% end %>
