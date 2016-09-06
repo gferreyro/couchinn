@@ -10,17 +10,26 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
   <table class="table table-hover">
-  <td><%= link_to "Tipos de hospedajes",accommodation_types_path%></td>
+  <%if (user_signed_in?)%>
+    <%if (current_user.email=="admin@admin.com")%>
+      <td><%= link_to "Tipos de hospedajes",accommodation_types_path%></td>
+    <%end%>
+  <%end%>
+  <%if user_signed_in?%>
   <td><%= link_to 'Nuevo Hospedaje', new_accomodation_path %></td>
-<!--
-  <% if(user_signed_in?) %>
-    <td><%= link_to 'Logout', destroy_user_session_path %></td>
-    <td><%= link_to 'Editar usuario', edit_user_registration_path %></td>
+  <%end%>
+  <td>  <% if user_signed_in? %>
+     Logeado como <strong><%= current_user.email %></strong>.
+    <%= link_to 'Modificar perfil', edit_user_registration_path, :class => 'navbar-link' %> |
+    <%= link_to "Desconectarse", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
   <% else %>
-    <td><%= link_to 'Registrarse', new_user_registration_path %></td>
-    <td><%= link_to 'Loguearse', new_user_session_path %></td>
+    <%= link_to "Registrase", new_user_registration_path, :class => 'navbar-link'  %> |
+    <%= link_to "Conectarse", new_user_session_path, :class => 'navbar-link'  %>
+  </td>
   <% end %>
--->
+
+
+
   </table>
 <nav class="minavbar">
   <div class="container-fluid minavbar">

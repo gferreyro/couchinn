@@ -1,5 +1,6 @@
 class AccomodationsController < ApplicationController
   before_action :set_accomodation, only: [:show, :edit, :update, :destroy]
+before_filter :authenticate_user!, except: [:index]
 
   # GET /accomodations
   # GET /accomodations.json
@@ -14,7 +15,7 @@ class AccomodationsController < ApplicationController
 
   # GET /accomodations/new
   def new
-    @accomodation = Accomodation.new
+    @accomodation = current_user.accomodations.build
   end
 
   # GET /accomodations/1/edit
@@ -24,7 +25,7 @@ class AccomodationsController < ApplicationController
   # POST /accomodations
   # POST /accomodations.json
   def create
-    @accomodation = Accomodation.new(accomodation_params)
+    @accomodation = current_user.accomodations.build(accomodation_params)
 
     respond_to do |format|
       if @accomodation.save
