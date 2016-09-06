@@ -32,13 +32,6 @@ ActiveRecord::Schema.define(version: 20160906004826) do
     t.integer  "user_id"
   end
 
-  create_table "tipo_hospedajes", force: true do |t|
-    t.string   "descripcion"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "estado"
-  end
-
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
