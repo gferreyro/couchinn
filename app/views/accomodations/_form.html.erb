@@ -19,16 +19,8 @@
     <%= f.label :descripcion %><br>
     <%= f.text_area :descripcion %>
   </div>
-  <%= f.label "Subir imagen del sitio" %><br>
-  <!--<div class="field">
-    <%= f.label :imagen %><br>
-    <%= f.text_area :imagen %>
-  </div>
-  <div class="actions">
-    <!--<%= f.submit 'Guardar', class: "btn btn-primary"%>
-    <%= link_to 'Cancelar', accomodations_path, class: "btn btn-default"%>
-  </div>
-  <h3> Subir archivo </h3> -->
+  <h3> Subir archivo </h3>
+
 <%= form_tag({:controller => "archivos", :action => "subir_archivos"}, :method => "post", :multipart => true) do %>
    <%= file_field_tag "archivo", :required => "required" %>
    <%= submit_tag "Subir archivo y hospedaje" %>

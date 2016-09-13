@@ -13,7 +13,7 @@ class ArchivosController < ApplicationController
       #Extensión del archivo.
       extension = nombre.slice(nombre.rindex("."), nombre.length).downcase;
       #Verifica que el archivo tenga una extensión correcta.
-      if extension == ".pdf" or extension == ".doc" or extension == ".docx"
+      if extension == ".pdf" or extension == ".doc" or extension == ".docx" or extension == ".jpg" or extension == ".png" or extension == ".jpng" 
          #Ruta del archivo.
          path = File.join(directorio, nombre);
          #Crear en el archivo en el directorio. Guardamos el resultado en una variable, será true si el archivo se ha guardado correctamente.
