@@ -6,7 +6,6 @@ get "archivos/listar_archivos"
 post "archivos/borrar_archivos"
 get "archivos/guardar_comentarios"
 post "archivos/guardar_comentarios"
-
   resources :accomodations
   devise_for :users
   resources :accommodation_types do
