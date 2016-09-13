@@ -20,8 +20,14 @@
     <%= f.label :Confirmacion_de_contraseña %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
+<div class="field">
+    <%= f.label :Edad %>
+    <% if @minimum_age  %>
+    <em>(<%= @mminimum_age  %> Ser mayores de 18)</em>
+    <% end %><br />
+  <div class="field">
+    <%= f.password_field :password, autocomplete: "off" %>
 
-  <div class="actions">
     <%= f.submit "Registrarse" %>
   </div>
 <% end %>

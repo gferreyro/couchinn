@@ -6,7 +6,7 @@ get "archivos/listar_archivos"
 post "archivos/borrar_archivos"
 get "archivos/guardar_comentarios"
 post "archivos/guardar_comentarios"
-
+get "search/create"
   resources :accomodations
   devise_for :users
   resources :accommodation_types do
@@ -23,7 +23,7 @@ post "archivos/guardar_comentarios"
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-    root 'accomodations#index'
+    root to:'accomodations#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,5 +1,14 @@
 <h1>Lista de tipos de hospedajes</h1>
+<div id="resultados">
+  
 
+</div>
+<%= form_tag "/search/create", method: :get, remote: true, id: "search-form" do %>
+    <%= text_field_tag :keyword, nil, placeholder: "¿Qué estás buscando?" %>
+    <%= content_tag :button, type: :submit do %>
+        Couch
+    <% end %> 
+<% end %>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -10,10 +19,7 @@
   </thead>
 
   <tbody>
-    <form>
- <input name=”search” <%= @q %> >
- <button type=”submit”>Buscar</button>
-</form>
+
     <% @accommodation_types.each do |accommodation_type| %>
       <tr>
         <td><%= accommodation_type.descripcion %></td>
