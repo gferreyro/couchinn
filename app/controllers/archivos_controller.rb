@@ -25,40 +25,37 @@ class ArchivosController < ApplicationController
              subir_archivo = "error";
           end
           #Redirige al controlador "archivos", a la acción "lista_archivos" y con la variable de tipo GET "subir_archivos" con el valor "ok" si se subió el archivo y "error" si no se pudo.
-          redirect_to :controller => "archivos", :action => "mostrar", :subir_archivo => subir_archivo;
+          redirect_to :controller => "archivos", :action => "listar_archivos", :subir_archivo => subir_archivo;
        else
           @formato_erroneo = true;
        end
     end
  end
- def listar_archivos
-    #Guardamos la lista de archivos de la carpeta "archivos".
-    @archivos = Dir.entries(Ruta_directorio_archivos);
-    #Mensaje que mostrará si la página viene desde otra acción.
-    @mensaje = "";
-    #Verificamos si existe la variable subir_archivo por GET.
-    if params[:subir_archivo].present?
-       if params[:subir_archivo] == "ok";
-          @mensaje = "El archivo ha sido subido exitosamente.";
-       else
-          @mensaje = "El archivo no ha podido ser subido.";
-       end
+def listar_archivos
+   #Guardamos la lista de archivos de la carpeta "archivos".
+   @archivos = Dir.entries(Ruta_directorio_archivos);
+   #Mensaje que mostrará si la página viene desde otra acción.
+   @mensaje = "";
+   #Verificamos si existe la variable subir_archivo por GET.
+   if params[:subir_archivo].present?
+      if params[:subir_archivo] == "ok";
+         @mensaje = "El archivo ha sido subido exitosamente.";
+      else
+         @mensaje = "El archivo no ha podido ser subido.";
+      end
+   end
+   #Verificamos si existe la variable eliminar_archivo por GET.
+   if params[:eliminar_archivo].present?
+      if params[:eliminar_archivo] == "ok";
+         @mensaje = "El archivo ha sido eliminado exitosamente";
+      else
+         @mensaje = "El archivo no ha podido ser eliminado.";
+      end
+   end
+   #Verifica si existe el archivo de los comentarios.
+   if File.exist?(Ruta_archivo_comentarios)
+      @comentarios = File.read(Ruta_archivo_comentarios);
     end
-    #Verificamos si existe la variable eliminar_archivo por GET.
-    if params[:eliminar_archivo].present?
-       if params[:eliminar_archivo] == "ok";
-          @mensaje = "El archivo ha sido eliminado exitosamente";
-       else
-          @mensaje = "El archivo no ha podido ser eliminado.";
-       end
-    end
-    #Verifica si existe el archivo de los comentarios.
-    if File.exist?(Ruta_archivo_comentarios)
-       @comentarios = File.read(Ruta_archivo_comentarios);
-    else
-       @comentarios = "";
-    end
- end
  def borrar_archivos
     #Recuperamos el nombre del archivo.
     archivo_a_borrar = params[:archivo_a_borrar];
@@ -104,4 +101,5 @@ class ArchivosController < ApplicationController
        @comentarios = "";
     end
  end
-ends
+end
+end

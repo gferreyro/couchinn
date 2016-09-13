@@ -10,6 +10,10 @@
   </thead>
 
   <tbody>
+    <form>
+ <input name=”search” <%= @q %> >
+ <button type=”submit”>Buscar</button>
+</form>
     <% @accommodation_types.each do |accommodation_type| %>
       <tr>
         <td><%= accommodation_type.descripcion %></td>
