@@ -70,8 +70,9 @@ class AccommodationTypesController < ApplicationController
       @accommodation_type.destroy
     end
     respond_to do |format|
-      format.html { redirect_to accommodation_types_url, notice: 'Tipo de hospedaje' + Accomodation.where(accommodation_type_id:@accommodation_type.id).count > 0 ? 'desactivado' : 'eliminado' + 'correctamente.' }
+      format.html { redirect_to accommodation_types_url, notice: 'Tipo de hospedaje ' + (Accomodation.where(accommodation_type_id:@accommodation_type.id).count > 0 ? 'desactivado' : 'eliminado') + ' correctamente.' }
       format.json { head :no_content }
+    end
   end
 
   private
