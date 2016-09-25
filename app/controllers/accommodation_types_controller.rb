@@ -64,11 +64,14 @@ class AccommodationTypesController < ApplicationController
   # DELETE /accommodation_types/1
   # DELETE /accommodation_types/1.json
   def destroy
-    @accommodation_type.destroy
-    respond_to do |format|
-      format.html { redirect_to accommodation_types_url, notice: 'Tipo de hospedaje eliminado correctamente.' }
-      format.json { head :no_content }
+    if Accomodation.where(accommodation_type_id:@accommodation_type.id).count > 0
+      @accommodation_type.activo=true
+    else
+      @accommodation_type.destroy
     end
+    respond_to do |format|
+      format.html { redirect_to accommodation_types_url, notice: 'Tipo de hospedaje' + Accomodation.where(accommodation_type_id:@accommodation_type.id).count > 0 ? 'desactivado' : 'eliminado' + 'correctamente.' }
+      format.json { head :no_content }
   end
 
   private
