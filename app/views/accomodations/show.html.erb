@@ -11,6 +11,16 @@
 </p>
 
 <p>
+  <strong>Tipo de hospedaje:</strong>
+
+  <% if @accomodation.accommodation_type_id = nil %>
+    <%= @accomodation.accommodation_type_id %>
+  <%else%>
+    <%= @accomodation.accommodation_type_id %>
+  <%end%>
+</p>
+
+<p>
   <strong>Imagen:</strong>
   <%= @accomodation.imagen %>
 </p>

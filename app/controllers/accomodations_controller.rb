@@ -70,6 +70,6 @@ before_filter :authenticate_user!, except: [:index]
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def accomodation_params
-      params.require(:accomodation).permit(:titulo, :descripcion, :imagen)
+      params.require(:accomodation).permit(:titulo, :descripcion, :accommodation_type_id, :imagen)
     end
 end
