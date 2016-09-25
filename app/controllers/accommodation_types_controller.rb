@@ -65,7 +65,8 @@ class AccommodationTypesController < ApplicationController
   # DELETE /accommodation_types/1.json
   def destroy
     if Accomodation.where(accommodation_type_id:@accommodation_type.id).count > 0
-      @accommodation_type.activo=true
+      @accommodation_type.activo=false
+      @accommodation_type.save
     else
       @accommodation_type.destroy
     end

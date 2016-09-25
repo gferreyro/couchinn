@@ -12,11 +12,10 @@
 
 <p>
   <strong>Tipo de hospedaje:</strong>
-
-  <% if @accomodation.accommodation_type_id = nil %>
+  <% if @accomodation.accommodation_type_id.nil? %>
     <%= @accomodation.accommodation_type_id %>
   <%else%>
-    <%= @accomodation.accommodation_type_id %>
+    <%= AccommodationType.find(@accomodation.accommodation_type_id).descripcion %>
   <%end%>
 </p>
 
