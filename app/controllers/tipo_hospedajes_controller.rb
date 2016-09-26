@@ -42,7 +42,7 @@ class TipoHospedajesController < ApplicationController
   def update
     respond_to do |format|
       if @tipo_hospedaje.update(tipo_hospedaje_params)
-        format.html { redirect_to @tipo_hospedaje, notice: 'Tipo hospedaje was successfully updated.' }
+        format.html { redirect_to @tipo_hospedaje, notice: 'Tipo hospedaje fue correctamente actualizado.' }
         format.json { render :show, status: :ok, location: @tipo_hospedaje }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class TipoHospedajesController < ApplicationController
   def destroy
     @tipo_hospedaje.destroy
     respond_to do |format|
-      format.html { redirect_to tipo_hospedajes_url, notice: 'Tipo hospedaje was successfully destroyed.' }
+      format.html { redirect_to tipo_hospedajes_url, notice: 'Tipo hospedaje fue correctamente eliminado.' }
       format.json { head :no_content }
     end
   end

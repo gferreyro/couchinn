@@ -7,6 +7,8 @@ end
 gem 'rails', '4.1.8'
 #devise
 gem 'devise'
+# Bootstrap Datepicker
+gem 'bootstrap-datepicker-rails'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets

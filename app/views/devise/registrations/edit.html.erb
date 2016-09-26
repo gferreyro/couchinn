@@ -4,12 +4,32 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :apellido %><br />
+    <%= f.text_field :apellido %>
+  </div>
+
+  <div class="dropdown">
+    <%= f.label "Fecha de nacimiento" %><br />
+    <%= f.text_field :fecha_nacimiento %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telefono %><br />
+    <%= f.text_field :telefono %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div>Se está esperando confirmación para: <%= resource.unconfirmed_email %></div>
   <% end %>
 
   <div class="field">
@@ -17,7 +37,7 @@
     <%= f.password_field :password, autocomplete: "off" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> caracteres minimos</em>
+      <em>(Mínimo <%= @minimum_password_length %> caracteres)</em>
     <% end %>
   </div>
 
