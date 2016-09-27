@@ -17,7 +17,7 @@
         <td><%= accomodation.titulo %></td>
         <td><%= accomodation.descripcion %></td>
         <td><%= accomodation.accommodation_type_id %></td>
-        <td><%= accomodation.imagen %></td>
+        <td><%= accomodation.imagen %><%= image_tag('casa.jpg') %></td>
         <%if user_signed_in?%>
         <td><%= link_to 'Mostrar', accomodation, class: "btn btn-default" %></td>
         <%end%>
