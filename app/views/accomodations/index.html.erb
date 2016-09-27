@@ -17,11 +17,11 @@
         <td><%= accomodation.titulo %></td>
         <td><%= accomodation.descripcion %></td>
         <td><%= accomodation.accommodation_type_id %></td>
-        <td><%= accomodation.imagen %><%= image_tag('casa.jpg') %></td>
+        <td><%= accomodation.user.premium ? imagen_tag('casa.jpg') : "" %></td>
         <%if user_signed_in?%>
-        <td><%= link_to 'Mostrar', accomodation, class: "btn btn-default" %></td>
+          <td><%= link_to 'Mostrar', accomodation, class: "btn btn-default" %></td>
         <%end%>
-     <% if (user_signed_in?)&&(accomodation.user==current_user or current_user.email=="admin@admin.com")%>
+      <%if (user_signed_in?)&&(accomodation.user==current_user or current_user.email=="admin@admin.com")%>
         <td><%= link_to 'Editar', edit_accomodation_path(accomodation), class: "btn btn-primary" %></td>
         <td><%= link_to 'Eliminar', accomodation, class: "btn btn-danger", method: :delete, data: { confirm: 'Seguro quiere eliminar?' } %></td>
       <%end%>
