@@ -16,6 +16,11 @@
   <div class="dropdown">
     <%= f.label "Fecha de nacimiento" %><br />
     <%= f.text_field :fecha_nacimiento, hide_label: true, class: 'datepicker' %>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    $('.datepicker').datepicker();
+   });
+</script>
   </div>
 
   <div class="field">
