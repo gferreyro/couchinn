@@ -47,17 +47,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :Edad %>
-    <% if @minimum_age  %>
-      <em>(<%= @mminimum_age  %> Ser mayores de 18)</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
     <%= f.submit "Registrarse", class: "btn btn-default" %>
     <%= render "devise/shared/links" %>
   </div>
