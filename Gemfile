@@ -7,6 +7,8 @@ end
 gem 'rails', '4.1.8'
 #devise
 gem 'devise'
+# Date Validator
+gem 'date_validator'
 # Bootstrap Datepicker
 gem 'bootstrap-datepicker-rails'
 # Use postgresql as the database for Active Record

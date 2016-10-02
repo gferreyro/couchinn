@@ -13,19 +13,24 @@
     <%= f.text_field :apellido %>
   </div>
 
-  <div class="dropdown">
+  <div class="field">
     <%= f.label "Fecha de nacimiento" %><br />
     <%= f.text_field :fecha_nacimiento, hide_label: true, class: 'datepicker' %>
     <script type="text/javascript">
-    $(document).ready(function(){
-    $('.datepicker').datepicker();
-   });
-</script>
+      $(document).ready(function()
+      {
+        $('.datepicker').datepicker({
+          format: 'dd/mm/yyyy',
+          todayHighlight:'TRUE',
+          autoclose: true,
+        });
+      });
+    </script>
   </div>
 
   <div class="field">
     <%= f.label :telefono %><br />
-    <%= f.text_field :telefono %>
+    <%= f.telephone_field :telefono %>
   </div>
 
   <div class="field">
