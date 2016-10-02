@@ -8,7 +8,7 @@ get "archivos/guardar_comentarios"
 post "archivos/guardar_comentarios"
 get "search/create"
   resources :accomodations
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations'}
   resources :accommodation_types do
     get :desactivar,on: :member
     get :activar,on: :member
