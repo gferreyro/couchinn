@@ -52,7 +52,14 @@
   </div>
 
   <div class="field">
-    <%= f.submit "Registrarse", class: "btn btn-default" %>
+    <%= f.check_box 'chkTerms', checked: false, :onchange => "btnRegister.disabled = !(btnRegister.disabled)" %>
+    <%= f.label 'chkTerms', 'Acepta los términos y condiciones de Couchinn' %>
+  </div>
+
+  <div class="field">
+    <%= f.submit "Registrarse", name: 'btnRegister', disabled: true, class: "btn btn-default" %>
+  </div>
+  <div class="field">
     <%= render "devise/shared/links" %>
   </div>
 <% end %>
