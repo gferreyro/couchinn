@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :accomodations
+  has_many :accomodations, dependent: :destroy
   def nombre_completo
   	"#{nombre} #{apellido}"
   end
