@@ -26,9 +26,9 @@
   </div>
   <div class="field">
     <%= f.label "Imágen" %><br>
-    <%= select_tag :imagen, options_from_collection_for_select(Image.all, :url, :descripcion), :onchange => 'imag.src = imagen.value' %>
+    <%= select_tag :imagen, options_from_collection_for_select(Image.all, :url, :descripcion, (@accomodation.imagen.blank?) ? Image.first.url : @accomodation.imagen), :onchange => 'imag.src = imagen.value' %>
     <br>
-    <%= image_tag(Image.first.url, :alt => "imagen", :name => "imag", height:"200") %>
+    <%= image_tag((@accomodation.imagen.blank?) ? Image.first.url : @accomodation.imagen, :alt => "imagen", :name => "imag", height:"200") %>
   </div>
   <!--
   <%= f.label "Subir imagen del sitio" %><br>
