@@ -1,0 +1,32 @@
+<h1>Listando imagenes</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Imágen</th>
+      <th>Descripción</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @images.each do |image| %>
+      <tr>
+        <td><%= !(image.url.blank?) ? image_tag(image.url, size:"100x100", alt:"Imagen") : "" %></td>
+        <td><%= !(image.descripcion.nil?) and !(image.descripcion.blank?) ? image.descripcion : "" %></td>
+        <td>
+          <%= link_to 'Mostrar', image, class: "btn btn-default" %>
+        </td>
+        <td>
+          <%= link_to 'Editar', edit_image_path(image), class: "btn btn-primary" %>
+        </td>
+        <td>
+          <%= link_to 'Eliminar', image, class: "btn btn-danger", method: :delete, data: { confirm: 'Está seguro?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nueva imagen', new_image_path %>

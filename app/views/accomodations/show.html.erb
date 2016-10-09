@@ -15,18 +15,22 @@
   <% if @accomodation.accommodation_type_id.nil? %>
     <%= @accomodation.accommodation_type_id %>
   <%else%>
-    <%= AccommodationType.find(@accomodation.accommodation_type_id).descripcion %>
+    <%= @accomodation.accommodation_type %>
   <%end%>
 </p>
 
 <p>
-  <strong>Imagen:</strong>
-  <%= @accomodation.imagen %>
+  <strong>Imagen:</strong><br>
+  <% if @accomodation.imagen.nil? or  @accomodation.imagen.blank? %>
+    <%= @accomodation.imagen %>
+  <%else%>
+    <%= image_tag(@accomodation.imagen) %>
+  <%end%>
 </p>
 <p>
-  <strong>Email del proprietario:</strong>
-  <%= @accomodation.user.email %>
+  <strong>Proprietario:</strong>
+  <%= @accomodation.user.nombre %>
 </p>
 
-<%= link_to 'Editar', edit_accomodation_path(@accomodation) %> |
-<%= link_to 'Atras', accomodations_path %>
+<%= link_to 'Editar', edit_accomodation_path(@accomodation), class: "btn btn-primary" %>
+<%= link_to 'Atras', accomodations_path, class: "btn btn-default" %>

@@ -4,16 +4,12 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  text-align: center;
-  vertical-align: middle;
 }
 
-p, ol, ul, th, td {
+p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  text-align: center;
-  vertical-align: middle;
 }
 
 pre {
@@ -24,26 +20,18 @@ pre {
 
 a {
   color: #000;
+  &:visited {
+    color: #666;
+  }
   &:hover {
-    background:rgba(0,0,0,0.0);
+    color: #fff;
+    background-color: #000;
   }
-  &.navbar-brand {
-    text-align: right;
-  }
-}
-
-textarea, input {
-  margin-bottom: 10px;
-  margin-left: 5%;
-  max-width: 90%;
 }
 
 div {
   &.field, &.actions {
     margin-bottom: 10px;
-  }
-  &.navbar-header {
-    text-align: right;
   }
 }
 

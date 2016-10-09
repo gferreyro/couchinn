@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :images
+
 get "archivos/subir_archivos"
 post "archivos/subir_archivos"
 get "archivos/listar_archivos"

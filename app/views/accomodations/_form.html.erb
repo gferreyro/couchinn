@@ -11,17 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :titulo %><br>
-    <%= f.text_field :titulo %>
+    <%= f.text_field :titulo, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :descripcion %><br>
-    <%= f.text_area :descripcion %>
+    <%= f.text_area :descripcion, class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label "Tipo de hospedaje" %><br>
-    <%= collection_select(:accomodation, :accommodation_type_id, AccommodationType.where(activo:true).order(:descripcion), :id, :descripcion) %>
+    <%= f.collection_select(:accommodation_type_id, AccommodationType.where(activo:true).order(:descripcion), :id, :descripcion) %>
+  </div>
+  <div class="field">
+    <%= f.label "Imágen" %><br>
+    <%= f.collection_select(:imagen, Image.all, :url, :descripcion) %>
   </div>
   <!--
   <%= f.label "Subir imagen del sitio" %><br>

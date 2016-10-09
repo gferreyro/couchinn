@@ -11,19 +11,20 @@
   <table class="table table-hover">
   <%if (user_signed_in?)%>
     <%if (current_user.email=="admin@admin.com")%>
-      <td><%= link_to "Tipos de hospedajes",accommodation_types_path%></td>
+      <td><%= link_to "Tipos de hospedajes", accommodation_types_path, class:"btn-xs btn-success" %></td>
+      <td><%= link_to "Imagenes", images_path, class:"btn-xs btn-success" %></td>
     <%end%>
   <%end%>
   <%if user_signed_in?%>
-    <td><%= link_to 'Nuevo Hospedaje', new_accomodation_path %></td>
+    <td><%= link_to 'Nuevo Hospedaje', new_accomodation_path, class:"btn-xs btn-success" %></td>
   <%end%>
   <td>  <% if user_signed_in? %>
-     Logueado como <strong><%= current_user.nombre %></strong>.
-    <%= link_to 'Modificar perfil', edit_user_registration_path, :class => 'navbar-link' %> |
-    <%= link_to "Cerrar sesion", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+     Logueado como <strong><%= current_user.nombre_completo %></strong>.
+    <%= link_to 'Modificar perfil', edit_user_registration_path, :class => 'navbar-link btn-xs btn-success' %>
+    <%= link_to "Cerrar sesion", destroy_user_session_path, method: :delete, :class => 'navbar-link btn-xs btn-success'  %>
   <% else %>
-    <%= link_to "Registrarse", new_user_registration_path, :class => 'navbar-link'  %> |
-    <%= link_to "Iniciar sesion", new_user_session_path, :class => 'navbar-link'  %>
+    <%= link_to "Registrarse", new_user_registration_path, :class => 'navbar-link btn-xs btn-success'  %>
+    <%= link_to "Iniciar sesion", new_user_session_path, :class => 'navbar-link btn-xs btn-success'  %>
   </td>
   <% end %>
 
@@ -32,11 +33,9 @@
   </table>
 <nav class="minavbar">
   <div class="container-fluid minavbar">
-    <div class="navbar-header ">
-      <a class="navbar-brand" href="#">
-        <%= link_to accomodations_path do%>
-      	<%= image_tag("couchinn.png", :alt => "Counchinn") %>
-        <%end%>
+    <div class="navbar-header" >
+      <a class="navbar-brand" href="#" >
+        <%= link_to image_tag("couchinn.png", :alt => "Counchinn"), accomodations_path %>
       </a>
     </div>
   </div>
