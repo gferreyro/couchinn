@@ -1,6 +1,6 @@
 <h1>Hospedajes</h1>
 
-<table class="table table-hover">
+<table class="table table" data-link="row">
   <thead>
     <tr>
       <th>Titulo</th>
@@ -13,7 +13,7 @@
 
   <tbody>
     <% @accomodations.each do |accomodation| %>
-      <tr>
+      <tr onclick="location.href='<%= accomodation_path(accomodation) %>'" >
         <td><%= accomodation.titulo %></td>
         <td><%= accomodation.descripcion %></td>
         <td><%= accomodation.accommodation_type %></td>

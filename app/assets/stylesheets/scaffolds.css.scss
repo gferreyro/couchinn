@@ -1,6 +1,8 @@
 body {
-  background-color: #fff;
+  background-color: rgba(0,0,0,0.5);
   color: #333;
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.5) 100%), url("http://images.freeimages.com/images/previews/ad4/designer-lounge-1-1516668.jpg");
+  background-size: 100% auto;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;

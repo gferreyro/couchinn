@@ -7,7 +7,7 @@ else
   puts 'El usuario administrador ya existe'
   if !(u.nombre == 'Compumundo')
     u.update(nombre:'Compumundo', apellido:'hypermegared', fecha_nacimiento:'1980-08-30', telefono:'2396429786', premium:true)
-  puts 'El usuario administrador fue actualizado'
+    puts 'El usuario administrador fue actualizado'
   end
 end
 if Image.all.count < 1

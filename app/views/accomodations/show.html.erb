@@ -29,8 +29,10 @@
 </p>
 <p>
   <strong>Proprietario:</strong>
-  <%= @accomodation.user.nombre %>
+  <%= @accomodation.user.nombre_completo %>
 </p>
 
-<%= link_to 'Editar', edit_accomodation_path(@accomodation), class: "btn btn-primary" %>
+<%if (user_signed_in?) && (@accomodation.user == current_user or current_user.email == "admin@admin.com" )%>
+  <%= link_to 'Editar', edit_accomodation_path(@accomodation), class: "btn btn-primary" %>
+<% end %>
 <%= link_to 'Atras', accomodations_path, class: "btn btn-default" %>
