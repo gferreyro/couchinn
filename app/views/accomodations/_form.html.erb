@@ -20,12 +20,15 @@
     <%= f.text_area :descripcion, class: "form-control" %>
   </div>
   <div class="field">
-    <%= f.label "Tipo de hospedaje" %><br>
+    <%= f.label "Tipo de hospedaje" %>
+    <br>
     <%= f.collection_select(:accommodation_type_id, AccommodationType.where(activo:true).order(:descripcion), :id, :descripcion) %>
   </div>
   <div class="field">
     <%= f.label "Imágen" %><br>
-    <%= f.collection_select(:imagen, Image.all, :url, :descripcion) %>
+    <%= select_tag :imagen, options_from_collection_for_select(Image.all, :url, :descripcion), :onchange => 'imag.src = imagen.value' %>
+    <br>
+    <%= image_tag(Image.first.url, :alt => "imagen", :name => "imag", height:"200") %>
   </div>
   <!--
   <%= f.label "Subir imagen del sitio" %><br>
