@@ -25,6 +25,10 @@
     <%= f.collection_select(:accommodation_type_id, AccommodationType.where(activo:true).order(:descripcion), :id, :descripcion) %>
   </div>
   <div class="field">
+    <%= f.label :capacidad %><br>
+    <%= f.number_field :capacidad, min: 1 %>
+  </div>
+  <div class="field">
     <%= f.label "Imágen" %><br>
     <%= select_tag :imagen, options_from_collection_for_select(Image.all, :url, :descripcion, (@accomodation.imagen.blank?) ? Image.first.url : @accomodation.imagen), :onchange => 'imag.src = imagen.value' %>
     <br>
