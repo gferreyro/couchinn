@@ -53,7 +53,7 @@
           <tr class="info">
         <% end %>
           <td>
-            <strong><%= User.find(question.user_id).nombre_completo %>:</strong> <%= question.q %>  (hace <%= time_ago_in_words(question.created_at) %>)<br>
+            <strong><%= question.user.nombre_completo %>:</strong> <%= question.q %>  (hace <%= time_ago_in_words(question.created_at) %>)<br>
             <% if !(question.a.blank?) %>
               <strong>Respuesta:</strong> <%= question.a %> (hace <%= time_ago_in_words(question.updated_at) %>)
             <% end %>

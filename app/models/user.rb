@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :accomodations, dependent: :destroy
+  has_many :questions, dependent: :destroy
   def nombre_completo
   	"#{nombre} #{apellido}"
   end

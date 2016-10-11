@@ -14,8 +14,8 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
-        <td><%= question.accomodation_id %></td>
-        <td><%= User.find(question.user_id).nombre_completo %></td>
+        <td><%= question.accomodation.titulo %></td>
+        <td><%= question.user.nombre_completo %></td>
         <td><%= question.q %></td>
         <td><%= question.a %></td>
         <td><%= link_to 'Mostrar', question, class: "btn btn-default" %></td>
