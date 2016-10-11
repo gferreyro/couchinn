@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Titulo:</strong>
   <%= @accomodation.titulo %>
@@ -21,7 +20,7 @@
 
 <p>
   <strong>Capacidad:</strong>
-  <%= @accomodation.capacidad %>
+  <%= (@accomodation.capacidad.nil?) ? 1 : @accomodation.capacidad %>
 </p>
 
 <p>
@@ -36,6 +35,36 @@
   <strong>Proprietario:</strong>
   <%= @accomodation.user.nombre_completo %>
 </p>
+
+<% q = Question.where(accomodation_id:@accomodation.id).order(:created_at) %>
+<% if (q.count > 0) %>
+  <% i = 1 %>
+  <table class="table table">
+    <thead>
+      <tr>
+        <th><h3>Preguntas</h3></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% q.each do |question| %>
+        <% if (i % 2 == 0) %>
+          <tr class="success">
+        <% else %>
+          <tr class="info">
+        <% end %>
+          <td>
+            <strong><%= User.find(question.user_id).nombre_completo %>:</strong> <%= question.q %>  (hace <%= time_ago_in_words(question.created_at) %>)<br>
+            <% if !(question.a.blank?) %>
+              <strong>Respuesta:</strong> <%= question.a %> (hace <%= time_ago_in_words(question.updated_at) %>)
+            <% end %>
+          </td>
+        </tr>
+        <% i += 1 %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<br><br>
 
 <%if (user_signed_in?) && (@accomodation.user == current_user or current_user.email == "admin@admin.com" )%>
   <%= link_to 'Editar', edit_accomodation_path(@accomodation), class: "btn btn-primary" %>

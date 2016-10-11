@@ -11,7 +11,7 @@
   <tbody>
     <% @images.each do |image| %>
       <tr onclick="location.href='<%= image_path(image) %>'">
-        <td><%= !(image.url.blank?) ? image_tag(image.url, size:"100x100", alt:"Imagen") : "" %></td>
+        <td><%= !(image.url.blank?) ? image_tag(image.url, height:"100", alt:"Imagen") : "" %></td>
         <td><%= !(image.descripcion.nil?) and !(image.descripcion.blank?) ? image.descripcion : "" %></td>
         <td>
           <%= link_to 'Mostrar', image, class: "btn btn-default" %>
@@ -29,4 +29,4 @@
 
 <br>
 
-<%= link_to 'Nueva imagen', new_image_path %>
+<%= link_to 'Nueva imagen', new_image_path, class: "btn btn-success" %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  accomodation_id: 1
+  user_id: 1
+  q: MyString
+  a: MyString
+
+two:
+  accomodation_id: 1
+  user_id: 1
+  q: MyString
+  a: MyString

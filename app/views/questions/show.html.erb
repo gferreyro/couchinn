@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Hospedaje:</strong>
+  <%= @question.accomodation_id %>
+</p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= User.find(@question.user_id).nombre_completo %>
+</p>
+
+<p>
+  <strong>Pregunta:</strong>
+  <%= @question.q %>
+</p>
+
+<p>
+  <strong>Respuesta:</strong>
+  <%= @question.a %>
+</p>
+
+<%= link_to 'Editar', edit_question_path(@question) %> |
+<%= link_to 'Atrás', questions_path %>

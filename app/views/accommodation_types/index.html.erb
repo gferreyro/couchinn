@@ -21,7 +21,7 @@
   <tbody>
 
     <% @accommodation_types.each do |accommodation_type| %>
-      <tr onclick="location.href='<%= accommodation_type_path(accommodation_type) %>'">
+      <tr>
         <td><%= accommodation_type.descripcion %></td>
         <td>
           <% if (accommodation_type.activo?)%>

@@ -1,0 +1,34 @@
+<%= form_for(@question) do |f| %>
+  <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@question.errors.count, "error") %> prohiben que se guarde esta pregunta:</h2>
+
+      <ul>
+      <% @question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Imágen" %><br>
+    <%= f.collection_select(:accomodation_id, Accomodation.all, :id, :titulo) %>
+  </div>
+  <div class="field">
+    <%= f.label "Usuario" %><br>
+    <%= f.number_field :user_id, value: current_user.id %>
+    <%= f.label User.find(current_user.id).nombre_completo %><br>
+  </div>
+  <div class="field">
+    <%= f.label "Pregunta" %><br>
+    <%= f.text_field :q %>
+  </div>
+  <div class="field">
+    <%= f.label "Respuesta" %><br>
+    <%= f.text_field :a %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Preguntar", class: "btn btn-success" %>
+  </div>
+<% end %>

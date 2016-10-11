@@ -1,0 +1,31 @@
+<h1>Preguntas</h1>
+
+<table class="table table" data-link="row">
+  <thead>
+    <tr>
+      <th>Hospedaje</th>
+      <th>Usuario</th>
+      <th>Pregunta</th>
+      <th>Respuesta</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.accomodation_id %></td>
+        <td><%= User.find(question.user_id).nombre_completo %></td>
+        <td><%= question.q %></td>
+        <td><%= question.a %></td>
+        <td><%= link_to 'Mostrar', question, class: "btn btn-default" %></td>
+        <td><%= link_to 'Editar', edit_question_path(question), class: "btn btn-primary" %></td>
+        <td><%= link_to 'Eliminar', question, class: "btn btn-danger", method: :delete, data: { confirm: 'Está seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nueva pregunta', new_question_path, class: "btn btn-success" %>
