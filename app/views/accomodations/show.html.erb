@@ -43,6 +43,11 @@
     <thead>
       <tr>
         <th><h3>Preguntas</h3></th>
+        <th>
+          <% if(user_signed_in?) and (@accomodation.user != current_user or current_user.email=="admin@admin.com") %>
+            <%= link_to 'Preguntar', new_question_path(user_id:current_user.id, accomodation_id:@accomodation.id), class: "btn btn-success" %>
+          <% end %>
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -52,13 +57,18 @@
         <% else %>
           <tr class="info">
         <% end %>
-          <td>
-            <strong><%= question.user.nombre_completo %>:</strong> <%= question.q %>  (hace <%= time_ago_in_words(question.created_at) %>)<br>
-            <% if !(question.a.blank?) %>
-              <strong>Respuesta:</strong> <%= question.a %> (hace <%= time_ago_in_words(question.updated_at) %>)
-            <% end %>
-          </td>
-        </tr>
+            <td>
+              <strong><%= question.user.nombre_completo %>:</strong> <%= question.q %>  (hace <%= time_ago_in_words(question.created_at) %>)<br>
+              <% if !(question.a.blank?) %>
+                <strong>Respuesta:</strong> <%= question.a %> (hace <%= time_ago_in_words(question.updated_at) %>)
+              <% end %>
+            </td>
+            <td>
+              <% if (user_signed_in?) and (question.a.blank?) and (@accomodation.user == current_user or current_user.email=="admin@admin.com")%>
+                <%= link_to 'Responder', edit_question_path(question), class: "btn btn-primary" %>
+              <% end %>
+            </td>
+          </tr>
         <% i += 1 %>
       <% end %>
     </tbody>

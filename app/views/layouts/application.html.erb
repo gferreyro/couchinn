@@ -15,7 +15,6 @@
     <%if (current_user.email=="admin@admin.com")%>
       <td><%= link_to "Tipos de hospedajes", accommodation_types_path, class:"btn-xs btn-success" %></td>
       <td><%= link_to "Imagenes", images_path, class:"btn-xs btn-success" %></td>
-      <td><%= link_to "Preguntas (temporal)", questions_path, class:"btn-xs btn-success" %></td>
     <%end%>
   <%end%>
   <%if user_signed_in?%>

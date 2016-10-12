@@ -11,24 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label "Imágen" %><br>
-    <%= f.collection_select(:accomodation_id, Accomodation.all, :id, :titulo) %>
+  <div  class="form-group">
+    <% if (@question.q.nil?) or (@question.q.blank?) %>
+      <%= f.text_area :q, class: "form-control" %>
+    <% else %>
+      Pregunta: <%= f.label @question.q %>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label "Usuario" %><br>
-    <%= f.number_field :user_id, value: current_user.id %>
-    <%= f.label User.find(current_user.id).nombre_completo %><br>
-  </div>
-  <div class="field">
-    <%= f.label "Pregunta" %><br>
-    <%= f.text_field :q %>
-  </div>
-  <div class="field">
-    <%= f.label "Respuesta" %><br>
-    <%= f.text_field :a %>
-  </div>
+  <% if !(@question.q.nil?) and !(@question.q.blank?) %>
+    <div class="form-group">
+      <%= f.label "Respuesta" %><br>
+      <%= f.text_area :a, class: "form-control" %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit "Preguntar", class: "btn btn-success" %>
+    <%= link_to 'Atrás', @question.accomodation, class: "btn btn-primary" %>
   </div>
 <% end %>

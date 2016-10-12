@@ -14,6 +14,8 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    @question.user_id = params[:user_id]
+    @question.accomodation_id = params[:accomodation_id]
     respond_with(@question)
   end
 
