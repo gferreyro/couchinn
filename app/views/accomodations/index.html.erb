@@ -17,7 +17,7 @@
       <tr onclick="location.href='<%= accomodation_path(accomodation) %>'" >
         <td><%= accomodation.titulo %></td>
         <td><%= accomodation.descripcion %></td>
-        <td><%= accomodation.accommodation_type %></td>
+        <td><%= accomodation.accommodation_type.descripcion %></td>
         <td><%= (accomodation.capacidad.nil?) ? "" : accomodation.capacidad %></td>
         <td><%= accomodation.user.premium and !(accomodation.imagen.blank?) ? image_tag(accomodation.imagen, height:"100", alt:"Imagen") : "" %></td>
         <%if user_signed_in?%>
