@@ -13,9 +13,7 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @question = Question.new
-    @question.user_id = params[:user_id]
-    @question.accomodation_id = params[:accomodation_id]
+    @question = Question.new(user_id:params[:user_id], accomodation_id:params[:accomodation_id])
     respond_with(@question)
   end
 
@@ -25,7 +23,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.save
-    respond_with(@question)
+    respond_with(@question.accomodation)
   end
 
   def update

@@ -14,7 +14,7 @@
   <% if @accomodation.accommodation_type_id.nil? %>
     <%= @accomodation.accommodation_type_id %>
   <%else%>
-    <%= @accomodation.accommodation_type %>
+    <%= @accomodation.accommodation_type.descripcion %>
   <%end%>
 </p>
 
@@ -35,45 +35,48 @@
   <strong>Proprietario:</strong>
   <%= @accomodation.user.nombre_completo %>
 </p>
-
-<% q = Question.where(accomodation_id:@accomodation.id).order(:created_at) %>
-<% if (q.count > 0) %>
-  <% i = 1 %>
-  <table class="table table">
-    <thead>
-      <tr>
-        <th><h3>Preguntas</h3></th>
-        <th>
-          <% if(user_signed_in?) and (@accomodation.user != current_user or current_user.email=="admin@admin.com") %>
-            <%= link_to 'Preguntar', new_question_path(user_id:current_user.id, accomodation_id:@accomodation.id), class: "btn btn-success" %>
-          <% end %>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <% q.each do |question| %>
-        <% if (i % 2 == 0) %>
-          <tr class="success">
-        <% else %>
-          <tr class="info">
-        <% end %>
-            <td>
-              <strong><%= question.user.nombre_completo %>:</strong> <%= question.q %>  (hace <%= time_ago_in_words(question.created_at) %>)<br>
-              <% if !(question.a.blank?) %>
-                <strong>Respuesta:</strong> <%= question.a %> (hace <%= time_ago_in_words(question.updated_at) %>)
-              <% end %>
-            </td>
-            <td>
-              <% if (user_signed_in?) and (question.a.blank?) and (@accomodation.user == current_user or current_user.email=="admin@admin.com")%>
-                <%= link_to 'Responder', edit_question_path(question), class: "btn btn-primary" %>
-              <% end %>
-            </td>
-          </tr>
-        <% i += 1 %>
-      <% end %>
-    </tbody>
-  </table>
+<% if(user_signed_in?) and (@accomodation.user != current_user or current_user.email=="admin@admin.com") %>
+  <p>
+    <%= link_to 'Solicitar Couch', new_request_path(user_id:current_user.id, accomodation_id:@accomodation.id), class: "btn btn-success" %>
+  </p>
 <% end %>
+
+<table class="table table">
+  <thead>
+    <tr>
+      <th><h3>Preguntas</h3></th>
+      <th>
+        <% if(user_signed_in?) and (@accomodation.user != current_user or current_user.email=="admin@admin.com") %>
+          <%= link_to 'Preguntar', new_question_path(:user_id => current_user.id, :accomodation_id => @accomodation.id), class: "btn btn-success" %>
+        <% end %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  <% q = Question.where(accomodation_id:@accomodation.id).order(:created_at) %>
+  <% i = 1 %>
+  <% q.each do |question| %>
+    <% if (i % 2 == 0) %>
+      <tr class="success">
+    <% else %>
+      <tr class="info">
+    <% end %>
+        <td>
+          <strong><%= question.user.nombre_completo %>:</strong> <%= question.q %>  (hace <%= time_ago_in_words(question.created_at) %>)<br>
+          <% if !(question.a.blank?) %>
+            <strong>Respuesta:</strong> <%= question.a %> (hace <%= time_ago_in_words(question.updated_at) %>)
+          <% end %>
+        </td>
+        <td>
+          <% if (user_signed_in?) and (question.a.blank?) and (@accomodation.user == current_user or current_user.email=="admin@admin.com")%>
+            <%= link_to 'Responder', edit_question_path(question), class: "btn btn-primary" %>
+          <% end %>
+        </td>
+      </tr>
+    <% i += 1 %>
+  <% end %>
+  </tbody>
+</table>
 <br><br>
 
 <%if (user_signed_in?) && (@accomodation.user == current_user or current_user.email == "admin@admin.com" )%>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :requests
+
   resources :questions
 
   resources :images

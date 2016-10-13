@@ -28,6 +28,11 @@ en:
         restrict_dependent_destroy:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
+    attributes:
+      request:
+        from: "Desde"
+        to: "Hasta"
+        status: "Estado"
   date:
     abbr_day_names:
     - dom
@@ -105,6 +110,9 @@ en:
       over_x_years:
         one: más de 1 año
         other: más de %{count} años
+      x_hours:
+        one: 1 hora
+        other: "%{count} horas"
       x_days:
         one: 1 día
         other: "%{count} días"
