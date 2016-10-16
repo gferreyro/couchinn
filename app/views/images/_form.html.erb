@@ -12,12 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :url %><br>
-    <%= f.text_field :url %><br>
+    <%= f.text_field :url, placeholder: "Dirección web", class: "form-control" %><br>
   </div>
   <div class="field">
-    <%= f.label :descripcion %><br>
-    <%= f.text_field :descripcion %><br>
+    <%= f.text_field :descripcion, placeholder: "Descripción", class: "form-control" %><br>
   </div>
   <div class="field">
     <% if !(@image.url.nil?) and !(@image.url.blank?) %>

@@ -12,12 +12,10 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :titulo %><br>
-    <%= f.text_field :titulo, class: "form-control" %>
+    <%= f.text_field :titulo, class: "form-control", placeholder: "Título" %>
   </div>
   <div class="form-group">
-    <%= f.label :descripcion %><br>
-    <%= f.text_area :descripcion, class: "form-control" %>
+    <%= f.text_area :descripcion, class: "form-control", placeholder: "Descripción" %>
   </div>
   <div class="field">
     <%= f.label "Tipo de hospedaje" %>

@@ -14,12 +14,30 @@
   <div class="field">
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :accomodation_id %>
-    <%= f.label :from %><br>
-    <%= f.date_select :from %>
+    <%= f.text_field :from, hide_label: true, placeholder: "Desde", class: 'datepicker' %>
+    <script type="text/javascript">
+      $(document).ready(function()
+      {
+        $('.datepicker').datepicker({
+          format: 'dd/mm/yyyy',
+          todayHighlight:'TRUE',
+          autoclose: true,
+        });
+      });
+    </script>
   </div>
   <div class="field">
-    <%= f.label :to %><br>
-    <%= f.date_select :to %>
+    <%= f.text_field :to, hide_label: true, placeholder: "Hasta", class: 'datepicker' %>
+    <script type="text/javascript">
+      $(document).ready(function()
+      {
+        $('.datepicker').datepicker({
+          format: 'dd/mm/yyyy',
+          todayHighlight:'TRUE',
+          autoclose: true,
+        });
+      });
+    </script>
   </div>
   <div class="field">
     <%= f.label "Estado: #{@request.status}" %><br>
