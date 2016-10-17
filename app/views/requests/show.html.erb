@@ -1,29 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @request.user_id %>
+  <strong>Usuario:</strong>
+  <%= @request.user.nombre_completo %>
 </p>
 
 <p>
-  <strong>Accomodation:</strong>
-  <%= @request.accomodation_id %>
+  <strong>Hospedaje:</strong>
+  <%= @request.accomodation.titulo %>
 </p>
 
 <p>
-  <strong>From:</strong>
+  <strong>Desde:</strong>
   <%= @request.from %>
 </p>
 
 <p>
-  <strong>To:</strong>
+  <strong>Hasta:</strong>
   <%= @request.to %>
 </p>
 
 <p>
-  <strong>Status:</strong>
+  <strong>Estado:</strong>
   <%= @request.status %>
 </p>
 
-<%= link_to 'Edit', edit_request_path(@request) %> |
-<%= link_to 'Back', requests_path %>
+<%= link_to 'Editar', edit_request_path(@request) %> |
+<%= link_to 'Atrás', requests_path %>

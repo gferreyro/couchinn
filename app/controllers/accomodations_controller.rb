@@ -1,11 +1,15 @@
 class AccomodationsController < ApplicationController
   before_action :set_accomodation, only: [:show, :edit, :update, :destroy]
-before_filter :authenticate_user!, except: [:index]
+  before_filter :authenticate_user!, except: [:index, :show]
 
   # GET /accomodations
   # GET /accomodations.json
   def index
     @accomodations = Accomodation.all
+  end
+
+  def my_accomodations
+    @accomodations = Accomodation.where(user_id:current_user.user_id)
   end
 
   # GET /accomodations/1

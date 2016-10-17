@@ -19,7 +19,7 @@
         <td><%= accomodation.descripcion %></td>
         <td><%= accomodation.accommodation_type.descripcion %></td>
         <td><%= (accomodation.capacidad.nil?) ? "" : accomodation.capacidad %></td>
-        <td><%= accomodation.user.premium and !(accomodation.imagen.blank?) ? image_tag(accomodation.imagen, height:"100", alt:"Imagen") : "" %></td>
+        <td><%= (accomodation.user.premium and !(accomodation.imagen.blank?)) ? (image_tag(accomodation.imagen, height:"100", alt:"Imagen")) : "" %></td>
         <%if user_signed_in?%>
           <td><%= link_to 'Mostrar', accomodation, class: "btn btn-default" %></td>
         <%end%>

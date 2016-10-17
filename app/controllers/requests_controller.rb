@@ -13,9 +13,7 @@ class RequestsController < ApplicationController
   end
 
   def new
-    @request = Request.new
-    @request.user_id = params[:user_id]
-    @request.accomodation_id = params[:accomodation_id]
+    @request = Request.new(user_id:params[:user_id], accomodation_id:params[:accomodation_id])
     respond_with(@request)
   end
 
@@ -24,8 +22,13 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new(request_params)
-    @request.save
-    respond_with(@request.accomodation)
+    if (Request.where(from: (@request.from..@request.to)).count > 0) or (Request.where(to: (@request.from..@request.to)).count > 0)
+      flash[:notice] = "No están disponibles las fechas seleccionadas"
+      redirect_to request.referer
+    else
+      @request.save
+      respond_with(@request.accomodation)
+    end
   end
 
   def update

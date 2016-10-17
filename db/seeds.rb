@@ -1,4 +1,6 @@
 AccommodationType.find_or_create_by(descripcion:'Casa')
+i = 1
+puts i.to_s + ': Verificando usuario Administrador'
 u = User.find_by(email:'admin@admin.com')
 if u.nil?
   User.create(email:'admin@admin.com', password:'123456', password_confirmation:'123456', nombre:'Compumundo', apellido:'hypermegared', fecha_nacimiento:'1980-08-30', telefono:'2396429786', premium:true)
@@ -6,11 +8,44 @@ if u.nil?
 else
   if !(u.nombre == 'Compumundo')
     u.update(nombre:'Compumundo', apellido:'hypermegared', fecha_nacimiento:'1980-08-30', telefono:'2396429786', premium:true)
-    puts 'El usuario administrador fue actualizado'
+    puts ': El usuario administrador fue actualizado'
   else
     puts 'El usuario administrador ya está actualizado'
   end
 end
+i += 1
+puts ''
+puts i.to_s + ': Verificando usuario normal no premium'
+u = User.find_by(email:'user@user.com')
+if u.nil?
+  User.create(email:'user@user.com', password:'123456', password_confirmation:'123456', nombre:'Usuario', apellido:'no premium', fecha_nacimiento:'1980-08-30', telefono:'2396429786', premium:false)
+  puts 'Usuario normal no premium agregado'
+  puts 'Usuario: user@user.com'
+  puts 'Password: 123456'
+else
+  u.update(nombre:'Usuario', apellido:'no premium', fecha_nacimiento:'1980-08-30', telefono:'2396429786', premium:false)
+  puts 'Usuario normal no premium actualizado'
+  puts 'Usuario: user@user.com'
+  puts 'Password: 123456'
+end
+i += 1
+puts ''
+puts i.to_s + ': Verificando usuario normal Premium'
+u = User.find_by(email:'premium@premium.com')
+if u.nil?
+  User.create(email:'premium@premium.com', password:'123456', password_confirmation:'123456', nombre:'Usuario', apellido:'premium', fecha_nacimiento:'1980-08-30', telefono:'2396429786', premium:true)
+  puts 'Usuario normal premium agregado'
+  puts 'Usuario: premium@premium.com'
+  puts 'Password: 123456'
+else
+  u.update(nombre:'Usuario', apellido:'premium', fecha_nacimiento:'1980-08-30', telefono:'2396429786', premium:false)
+  puts 'Usuario normal premium actualizado'
+  puts 'Usuario: premium@premium.com'
+  puts 'Password: 123456'
+end
+i += 1
+puts ''
+puts i.to_s + ': Verificando imágenes'
 if Image.all.count < 1
   Image.create(url:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Pickle_Barrel_House_2008.jpg/320px-Pickle_Barrel_House_2008.jpg', descripcion:'Casa Barril')
   Image.create(url:'https://upload.wikimedia.org/wikipedia/commons/0/06/The_Round_House%2C_Finchingfield%2C_Essex_-_geograph.org.uk_-_236275.jpg', descripcion:'Casa hexagonal')
@@ -26,4 +61,4 @@ if Image.all.count < 1
 else
   puts 'Ya hay imagenes disponibles'
 end
-
+i += 1

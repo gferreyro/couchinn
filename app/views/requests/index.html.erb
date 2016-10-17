@@ -1,6 +1,6 @@
-<h1>Listing requests</h1>
+<h1>Solicitudes</h1>
 
-<table>
+<table class="table table">
   <thead>
     <tr>
       <th>Usuario</th>
@@ -20,9 +20,9 @@
         <td><%= request.from %></td>
         <td><%= request.to %></td>
         <td><%= request.status %></td>
-        <td><%= link_to 'Mostrar', request %></td>
-        <td><%= link_to 'Editar', edit_request_path(request) %></td>
-        <td><%= link_to 'Eliminar', request, method: :delete, data: { confirm: 'Está seguro?' } %></td>
+        <td><%= link_to 'Mostrar', request, class: "btn btn-default" %></td>
+        <td><%= link_to 'Editar', edit_request_path(request), class: "btn btn-primary" %></td>
+        <td><%= link_to 'Eliminar', request, class: "btn btn-danger", method: :delete, data: { confirm: 'Está seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'Nueva solicitud', new_request_path %>
+<%= link_to 'Nueva solicitud', new_request_path, class: "btn btn-success" %>
