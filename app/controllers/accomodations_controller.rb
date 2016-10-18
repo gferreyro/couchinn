@@ -15,6 +15,7 @@ class AccomodationsController < ApplicationController
   end
 
   def my
+    @accomodations = current_user.accomodations
   end
 
   # GET /accomodations/new
@@ -73,7 +74,7 @@ class AccomodationsController < ApplicationController
     end
 
     def my_accomodations
-      @accomodation = Accomodation.all
+      @accomodation = Accomodation.where(user_id:params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

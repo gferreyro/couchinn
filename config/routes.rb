@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get "search/create"
 
   resources :accomodations do
-    get :my, on: :member
+    get :my, on: :collection
   end
   devise_for :users, :controllers => { registrations: 'registrations'}
   resources :users

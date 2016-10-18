@@ -1,0 +1,32 @@
+
+<table class="table table" data-link="row">
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Descripcion</th>
+      <th>Tipo</th>
+      <th>Capacidad</th>
+      <th>Imagen</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @accomodations.each do |accomodation| %>
+      <tr onclick="location.href='<%= accomodation_path(accomodation) %>'" >
+        <td><%= accomodation.titulo %></td>
+        <td><%= accomodation.descripcion %></td>
+        <td><%= accomodation.accommodation_type.descripcion %></td>
+        <td><%= (accomodation.capacidad.nil?) ? "" : accomodation.capacidad %></td>
+        <td><%= (accomodation.user.premium and !(accomodation.imagen.blank?)) ? (image_tag(accomodation.imagen, height:"100", alt:"Imagen")) : "" %></td>
+        <%if user_signed_in?%>
+          <td><%= link_to 'Mostrar', accomodation, class: "btn btn-default" %></td>
+        <%end%>
+        <%if (user_signed_in?)&&(accomodation.user==current_user or current_user.email=="admin@admin.com")%>
+          <td><%= link_to 'Editar', edit_accomodation_path(accomodation), class: "btn btn-primary" %></td>
+          <td><%= link_to 'Eliminar', accomodation, class: "btn btn-danger", method: :delete, data: { confirm: 'Seguro quiere eliminar?' } %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
