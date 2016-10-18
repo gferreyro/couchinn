@@ -18,6 +18,9 @@
     <%end%>
   <%end%>
   <%if user_signed_in?%>
+  <!--
+    <td><%= link_to 'Mis hospedajes', my_accomodation_path(current_user.id), class:"btn-xs btn-success" %></td>
+  -->
     <td><%= link_to 'Nuevo hospedaje', new_accomodation_path, class:"btn-xs btn-success" %></td>
   <%end%>
   <td>  <% if user_signed_in? %>

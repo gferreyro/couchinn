@@ -1,5 +1,6 @@
 class AccomodationsController < ApplicationController
   before_action :set_accomodation, only: [:show, :edit, :update, :destroy]
+  before_action :my_accomodations, only: [:my]
   before_filter :authenticate_user!, except: [:index, :show]
 
   # GET /accomodations
@@ -8,13 +9,12 @@ class AccomodationsController < ApplicationController
     @accomodations = Accomodation.all
   end
 
-  def my_accomodations
-    @accomodations = Accomodation.where(user_id:current_user.user_id)
-  end
-
   # GET /accomodations/1
   # GET /accomodations/1.json
   def show
+  end
+
+  def my
   end
 
   # GET /accomodations/new
@@ -70,6 +70,10 @@ class AccomodationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_accomodation
       @accomodation = Accomodation.find(params[:id])
+    end
+
+    def my_accomodations
+      @accomodation = Accomodation.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

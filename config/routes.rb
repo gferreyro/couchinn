@@ -6,18 +6,22 @@ Rails.application.routes.draw do
 
   resources :images
 
-get "archivos/subir_archivos"
-post "archivos/subir_archivos"
-get "archivos/listar_archivos"
-post "archivos/borrar_archivos"
-get "archivos/guardar_comentarios"
-post "archivos/guardar_comentarios"
-get "search/create"
-  resources :accomodations
+  get "archivos/subir_archivos"
+  post "archivos/subir_archivos"
+  get "archivos/listar_archivos"
+  post "archivos/borrar_archivos"
+  get "archivos/guardar_comentarios"
+  post "archivos/guardar_comentarios"
+  get "search/create"
+
+  resources :accomodations do
+    get :my, on: :member
+  end
   devise_for :users, :controllers => { registrations: 'registrations'}
+  resources :users
   resources :accommodation_types do
-    get :desactivar,on: :member
-    get :activar,on: :member
+    get :desactivar, on: :member
+    get :activar, on: :member
   end
 
   resources :tipo_hospedajes
@@ -29,7 +33,7 @@ get "search/create"
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-    root to:'accomodations#index'
+  root to:'accomodations#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
