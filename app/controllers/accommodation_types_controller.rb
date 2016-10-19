@@ -1,5 +1,5 @@
 class AccommodationTypesController < ApplicationController
-  before_action :set_accommodation_type, only: [:show, :edit, :update, :destroy,:desactivar,:activar]
+  before_action :set_accommodation_type, only: [:show, :edit, :update, :destroy, :desactivar, :activar]
 
   # GET /accommodation_types
   # GET /accommodation_types.json
@@ -50,15 +50,17 @@ class AccommodationTypesController < ApplicationController
       end
     end
   end
+
   def desactivar
       @accommodation_type.activo=false
       @accommodation_type.save
-       redirect_to accommodation_types_url, notice: 'Tipo de hospedaje modificado correctamente.'
+      redirect_to accommodation_types_url, notice: 'Tipo de hospedaje modificado correctamente.'
   end
+
   def activar
       @accommodation_type.activo=true
       @accommodation_type.save
-       redirect_to accommodation_types_url, notice: 'Tipo de hospedaje modificado correctamente.'
+      redirect_to accommodation_types_url, notice: 'Tipo de hospedaje modificado correctamente.'
   end
 
   # DELETE /accommodation_types/1

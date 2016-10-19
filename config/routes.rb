@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
-  resources :requests
+  resources :requests do
+    get :my, on: :collection
+    get :accept, on: :member
+    get :reject, on: :member
+  end
 
   resources :questions
 

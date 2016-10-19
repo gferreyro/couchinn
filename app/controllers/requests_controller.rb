@@ -1,11 +1,16 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :edit, :update, :destroy]
+  before_action :set_request, only: [:show, :edit, :update, :destroy, :accept, :reject]
+  before_action :my_requests, only: [:my]
 
   respond_to :html
 
   def index
     @requests = Request.all
     respond_with(@requests)
+  end
+
+  def my
+    respond_with(my_requests)
   end
 
   def show
@@ -37,6 +42,18 @@ class RequestsController < ApplicationController
     respond_with(@request)
   end
 
+  def accept
+    @request.update(status:"Aceptada")
+    flash[:notice] = 'Solicitud aceptada correctamente.'
+    redirect_to my_requests_path
+  end
+
+  def reject
+    @request.update(status:"Rechazada")
+    flash[:notice] = 'Solicitud rechazada correctamente.'
+    redirect_to my_requests_path
+  end
+
   def destroy
     @request.destroy
     respond_with(@request)
@@ -45,6 +62,10 @@ class RequestsController < ApplicationController
   private
     def set_request
       @request = Request.find(params[:id])
+    end
+
+    def my_requests
+      @requests = Request.where(user_id:current_user.id)
     end
 
     def request_params

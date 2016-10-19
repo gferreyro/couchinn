@@ -1,0 +1,38 @@
+<table class="table table">
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Hospedaje</th>
+      <th>Desde</th>
+      <th>Hasta</th>
+      <th>Estado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr>
+        <td><%= request.user.nombre_completo %></td>
+        <td><%= request.accomodation.titulo %></td>
+        <td><%= request.from %></td>
+        <td><%= request.to %></td>
+        <td><%= request.status %></td>
+<!--
+        <td><%= link_to 'Mostrar', request, class: "btn btn-default" %></td>
+        <td><%= link_to 'Editar', edit_request_path(request), class: "btn btn-primary" %></td>
+-->
+        <% if (request.status == 'Pendiente') or (request.status == 'Rechazada')%>
+          <td><%= link_to 'Aceptar', accept_request_path(request), class: "btn btn-success", data: { confirm: 'Está seguro de ACEPTAR esta solicitud?' } %></td>
+        <% end %>
+        <% if (request.status == 'Pendiente') or (request.status == 'Aceptada')%>
+          <td><%= link_to 'Rechazar', reject_request_path(request), class: "btn btn-danger", data: { confirm: 'Está seguro de RECHAZAR esta solicitud?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nueva solicitud', new_request_path, class: "btn btn-success" %>

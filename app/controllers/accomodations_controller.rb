@@ -74,7 +74,7 @@ class AccomodationsController < ApplicationController
     end
 
     def my_accomodations
-      @accomodation = Accomodation.where(user_id:params[:id])
+      @accomodation = Accomodation.where(current_user.accomodations)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
