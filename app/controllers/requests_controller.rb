@@ -13,7 +13,7 @@ class RequestsController < ApplicationController
   end
 
   def new
-    @request = Request.new(user_id:params[:user_id], accomodation_id:params[:accomodation_id])
+    @request = Request.new(user_id:current_user.id, accomodation_id:params[:accomodation_id])
     respond_with(@request)
   end
 
@@ -22,11 +22,12 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new(request_params)
-    if (Request.where(from: (@request.from..@request.to)).count > 0) or (Request.where(to: (@request.from..@request.to)).count > 0)
+    if (Request.where(status:"Pendiente").where(accomodation_id:@request.accomodation_id, from: (@request.from..@request.to)).count > 0) or (Request.where(status:"Pendiente").where(accomodation_id:@request.accomodation_id, to: (@request.from..@request.to)).count > 0)
       flash[:notice] = "No están disponibles las fechas seleccionadas"
       redirect_to request.referer
     else
       @request.save
+      flash[:notice] = "Solicitud enviada correctamente. Aguarde que sea respondida."
       respond_with(@request.accomodation)
     end
   end

@@ -37,7 +37,7 @@
 </p>
 <% if(user_signed_in?) and (@accomodation.user != current_user or current_user.email=="admin@admin.com") %>
   <p>
-    <%= link_to 'Solicitar Couch', new_request_path(user_id:current_user.id, accomodation_id:@accomodation.id), class: "btn btn-success" %>
+    <%= link_to 'Solicitar Couch', new_request_path(accomodation_id:@accomodation.id), class: "btn btn-success" %>
   </p>
 <% end %>
 
@@ -47,7 +47,7 @@
       <th><h3>Preguntas</h3></th>
       <th>
         <% if(user_signed_in?) and (@accomodation.user != current_user or current_user.email=="admin@admin.com") %>
-          <%= link_to 'Preguntar', new_question_path(user_id:current_user.id, accomodation_id:@accomodation.id), class: "btn btn-success" %>
+          <%= link_to 'Preguntar', new_question_path(accomodation_id:@accomodation.id), class: "btn btn-success" %>
         <% end %>
       </th>
     </tr>

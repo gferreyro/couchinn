@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @question = Question.new(user_id:params[:user_id], accomodation_id:params[:accomodation_id])
+    @question = Question.new(user_id:current_user.id, accomodation_id:params[:accomodation_id])
     respond_with(@question)
   end
 
