@@ -37,7 +37,12 @@
 </p>
 <% if(user_signed_in?) and (@accomodation.user != current_user or current_user.email=="admin@admin.com") %>
   <p>
-    <%= link_to 'Solicitar Couch', new_request_path(accomodation_id:@accomodation.id), class: "btn btn-success" %>
+    <% if(user_signed_in?) and (@accomodation.user != current_user or current_user.email=="admin@admin.com") %>
+      <%= link_to 'Solicitar Couch', new_request_path(accomodation_id:@accomodation.id), class: "btn btn-success" %>
+    <% end %>
+    <% if(user_signed_in?) and (@accomodation.user == current_user or current_user.email=="admin@admin.com") %>
+      <%= link_to 'Solicitudes de mi Couch', new_request_path(accomodation_id:@accomodation.id), disabled: !(@accomodation.requests.count > 0), class: "btn btn-success" %>
+    <% end %>
   </p>
 <% end %>
 
@@ -83,3 +88,6 @@
   <%= link_to 'Editar', edit_accomodation_path(@accomodation), class: "btn btn-primary" %>
 <% end %>
 <%= link_to 'Atras', accomodations_path, class: "btn btn-default" %>
+<script>
+  $('a[disabled]').click(function(e){ e.preventDefault(); });
+</script>
