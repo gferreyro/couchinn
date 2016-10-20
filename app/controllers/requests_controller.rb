@@ -10,7 +10,8 @@ class RequestsController < ApplicationController
   end
 
   def my
-    respond_with(my_requests)
+    @requests = my_requests
+    respond_with(@request)
   end
 
   def show
@@ -44,10 +45,10 @@ class RequestsController < ApplicationController
 
   def accept
     @request.update(status:"Aceptada")
-    Request.where(status:"Pendiente", accomodation_id:@request.accomodation_id).where(from: (@request.from..@request.to)).each do |req|
+    Request.where.not(status:"Rechazada").where(accomodation_id:@request.accomodation_id).where(from: (@request.from..@request.to)).where.not(id:@request.id).each do |req|
       req.update(status:"Rechazada")
     end
-    Request.where(status:"Pendiente", accomodation_id:@request.accomodation_id).where(to: (@request.from..@request.to)).each do |req|
+    Request.where.not(status:"Rechazada").where(accomodation_id:@request.accomodation_id).where(to: (@request.from..@request.to)).where.not(id:@request.id).each do |req|
       req.update(status:"Rechazada")
     end
     flash[:notice] = 'Solicitud aceptada correctamente.'
@@ -71,7 +72,7 @@ class RequestsController < ApplicationController
     end
 
     def my_requests
-      @requests = Request.where(user_id:current_user.id)
+      @requests = Request.joins(:accomodation).merge(Accomodation.where(user_id:current_user.id))
     end
 
     def request_params
