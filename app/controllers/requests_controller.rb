@@ -27,7 +27,7 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new(request_params)
-    if (Request.where(status:"Pendiente").where(accomodation_id:@request.accomodation_id, from: (@request.from..@request.to)).count > 0) or (Request.where(status:"Pendiente").where(accomodation_id:@request.accomodation_id, to: (@request.from..@request.to)).count > 0)
+    if (Request.where(status:"Aceptada", accomodation_id:@request.accomodation_id).where(from: (@request.from..@request.to)).count > 0) or (Request.where(status:"Aceptada", accomodation_id:@request.accomodation_id).where(to: (@request.from..@request.to)).count > 0)
       flash[:notice] = "No están disponibles las fechas seleccionadas"
       redirect_to request.referer
     else
@@ -44,6 +44,12 @@ class RequestsController < ApplicationController
 
   def accept
     @request.update(status:"Aceptada")
+    Request.where(status:"Pendiente", accomodation_id:@request.accomodation_id).where(from: (@request.from..@request.to)).each do |req|
+      req.update(status:"Rechazada")
+    end
+    Request.where(status:"Pendiente", accomodation_id:@request.accomodation_id).where(to: (@request.from..@request.to)).each do |req|
+      req.update(status:"Rechazada")
+    end
     flash[:notice] = 'Solicitud aceptada correctamente.'
     redirect_to my_requests_path
   end

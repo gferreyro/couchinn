@@ -19,13 +19,11 @@
         <td><%= accomodation.accommodation_type.descripcion %></td>
         <td><%= (accomodation.capacidad.nil?) ? "" : accomodation.capacidad %></td>
         <td><%= (accomodation.user.premium and !(accomodation.imagen.blank?)) ? (image_tag(accomodation.imagen, height:"100", alt:"Imagen")) : "" %></td>
-        <%if user_signed_in?%>
-          <td><%= link_to 'Mostrar', accomodation, class: "btn btn-default" %></td>
-        <%end%>
-        <%if (user_signed_in?) && (accomodation.user==current_user or current_user.email=="admin@admin.com")%>
+        <td><%= link_to 'Mostrar', accomodation, class: "btn btn-default" %></td>
+        <% if (user_signed_in?) && (accomodation.user == current_user or current_user.email == "admin@admin.com") %>
           <td><%= link_to 'Editar', edit_accomodation_path(accomodation), class: "btn btn-primary" %></td>
           <td><%= link_to 'Eliminar', accomodation, class: "btn btn-danger", method: :delete, data: { confirm: 'Seguro quiere eliminar?' } %></td>
-        <%end%>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
