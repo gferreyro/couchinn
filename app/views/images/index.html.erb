@@ -10,9 +10,9 @@
   </thead>
   <tbody>
     <% @images.each do |image| %>
-      <tr onclick="location.href='<%= image_path(image) %>'">
-        <td><%= !(image.url.blank?) ? image_tag(image.url, height:"100", alt:"Imagen") : "" %></td>
-        <td><%= !(image.descripcion.nil?) and !(image.descripcion.blank?) ? image.descripcion : "" %></td>
+      <tr>
+        <td onclick="location.href='<%= image_path(image) %>'"><%= !(image.url.blank?) ? image_tag(image.url, height:"100", alt:"Imagen") : "" %></td>
+        <td onclick="location.href='<%= image_path(image) %>'"><%= !(image.descripcion.nil?) and !(image.descripcion.blank?) ? image.descripcion : "" %></td>
         <td>
           <%= link_to 'Mostrar', image, class: "btn btn-default" %>
         </td>

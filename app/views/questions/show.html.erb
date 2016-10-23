@@ -2,7 +2,7 @@
 
 <p>
   <strong>Hospedaje:</strong>
-  <%= @question.accomodation_id %>
+  <%= @question.accomodation.titulo %>
 </p>
 
 <p>
@@ -19,6 +19,4 @@
   <strong>Respuesta:</strong>
   <%= @question.a %>
 </p>
-
-<%= link_to 'Editar', edit_question_path(@question) %> |
-<%= link_to 'Atrás', questions_path %>
+<%= link_to 'Atrás', questions_path, class: "btn btn-primary" %>

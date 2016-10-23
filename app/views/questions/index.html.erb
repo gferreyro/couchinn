@@ -14,10 +14,10 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
-        <td><%= question.accomodation.titulo %></td>
-        <td><%= question.user.nombre_completo %></td>
-        <td><%= question.q %></td>
-        <td><%= question.a %></td>
+        <td onclick="location.href='<%= question_path(question) %>'"><%= question.accomodation.titulo %></td>
+        <td onclick="location.href='<%= question_path(question) %>'"><%= question.user.nombre_completo %></td>
+        <td onclick="location.href='<%= question_path(question) %>'"><%= question.q %></td>
+        <td onclick="location.href='<%= question_path(question) %>'"><%= question.a %></td>
         <td><%= link_to 'Mostrar', question, class: "btn btn-default" %></td>
         <td><%= link_to 'Editar', edit_question_path(question), class: "btn btn-primary" %></td>
         <td><%= link_to 'Eliminar', question, class: "btn btn-danger", method: :delete, data: { confirm: 'Está seguro?' } %></td>

@@ -13,12 +13,12 @@
 
   <tbody>
     <% @accomodations.each do |accomodation| %>
-      <tr onclick="location.href='<%= accomodation_path(accomodation) %>'" >
-        <td><%= accomodation.titulo %></td>
-        <td><%= accomodation.descripcion %></td>
-        <td><%= accomodation.accommodation_type.descripcion %></td>
-        <td><%= (accomodation.capacidad.nil?) ? "" : accomodation.capacidad %></td>
-        <td><%= (accomodation.user.premium and !(accomodation.imagen.blank?)) ? (image_tag(accomodation.imagen, height:"100", alt:"Imagen")) : "" %></td>
+      <tr>
+        <td onclick="location.href='<%= accomodation_path(accomodation) %>'"><%= accomodation.titulo %></td>
+        <td onclick="location.href='<%= accomodation_path(accomodation) %>'"><%= accomodation.descripcion %></td>
+        <td onclick="location.href='<%= accomodation_path(accomodation) %>'"><%= accomodation.accommodation_type.descripcion %></td>
+        <td onclick="location.href='<%= accomodation_path(accomodation) %>'"><%= (accomodation.capacidad.nil?) ? "" : accomodation.capacidad %></td>
+        <td onclick="location.href='<%= accomodation_path(accomodation) %>'"><%= (accomodation.user.premium and !(accomodation.imagen.blank?)) ? (image_tag(accomodation.imagen, height:"100", alt:"Imagen")) : "" %></td>
         <td><%= link_to 'Mostrar', accomodation, class: "btn btn-default" %></td>
         <% if (user_signed_in?) && (accomodation.user == current_user or current_user.email == "admin@admin.com") %>
           <td><%= link_to 'Editar', edit_accomodation_path(accomodation), class: "btn btn-primary" %></td>

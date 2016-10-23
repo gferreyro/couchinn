@@ -15,8 +15,8 @@
       <tr>
         <td><%= request.user.nombre_completo %></td>
         <td><%= request.accomodation.titulo %></td>
-        <td><%= request.from %></td>
-        <td><%= request.to %></td>
+        <td><%= I18n.l request.from %></td>
+        <td><%= I18n.l request.to %></td>
         <td><%= request.status %></td>
 <!--
         <td><%= link_to 'Mostrar', request, class: "btn btn-default" %></td>
