@@ -12,5 +12,13 @@
  *
  *= require_tree .
  *= require_self
+ *= require css/bootstrap-theme.css
+ *= require css/bootstrap-theme.css.map
+ *= require css/bootstrap-theme.min.css
+ *= require css/bootstrap-theme.min.css.map
+ *= require css/bootstrap.css
+ *= require css/bootstrap.css.map
+ *= require css/bootstrap.min.css
+ *= require css/bootstrap.min.css.map
  *= require bootstrap-datepicker
  */
