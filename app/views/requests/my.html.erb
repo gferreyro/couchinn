@@ -1,3 +1,80 @@
-<h1>Solicitudes de mis hospedajes</h1>
+<h1>Solicitudes de mis Couch</h1>
+<table class="table table">
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Hospedaje</th>
+      <th>Desde</th>
+      <th>Hasta</th>
+      <th>Estado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<%= render 'list' %>
+  <tbody>
+    <% @requests["myCouchReq"].each do |request| %>
+      <tr>
+        <td><%= request.user.nombre_completo %></td>
+        <td><%= request.accomodation.titulo %></td>
+        <td><%= request.from %></td>
+        <td><%= request.to %></td>
+        <td><%= request.status %></td>
+        <% if (request.status == 'Aceptada') %>
+          <td><%= link_to 'Mostrar', request, class: "btn btn-default" %></td>
+        <% end %>
+<!--
+        <td><%= link_to 'Editar', edit_request_path(request), class: "btn btn-primary" %></td>
+-->
+        <% if (request.status != 'Aceptada') %>
+          <td><%= link_to 'Aceptar', accept_request_path(request), class: "btn btn-success", data: { confirm: 'Está seguro de ACEPTAR esta solicitud?' } %></td>
+        <% end %>
+        <% if (request.status != 'Rechazada') %>
+          <td><%= link_to 'Rechazar', reject_request_path(request), class: "btn btn-danger", data: { confirm: 'Está seguro de RECHAZAR esta solicitud?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h1>Mis solicitudes de Couch</h1>
+<table class="table table">
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Hospedaje</th>
+      <th>Desde</th>
+      <th>Hasta</th>
+      <th>Estado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requests["myReqs"].each do |request| %>
+      <tr>
+        <td><%= request.accomodation.user.nombre_completo %></td>
+        <td><%= request.accomodation.titulo %></td>
+        <td><%= request.from %></td>
+        <td><%= request.to %></td>
+        <td><%= request.status %></td>
+        <% if (request.status == 'Aceptada') %>
+          <td><%= link_to 'Mostrar', request, class: "btn btn-default" %></td>
+        <% end %>
+<!--
+        <td><%= link_to 'Editar', edit_request_path(request), class: "btn btn-primary" %></td>
+        <% if (request.status != 'Aceptada') %>
+          <td><%= link_to 'Aceptar', accept_request_path(request), class: "btn btn-success", data: { confirm: 'Está seguro de ACEPTAR esta solicitud?' } %></td>
+        <% end %>
+        <% if (request.status != 'Rechazada') %>
+          <td><%= link_to 'Rechazar', reject_request_path(request), class: "btn btn-danger", data: { confirm: 'Está seguro de RECHAZAR esta solicitud?' } %></td>
+        <% end %>
+-->
+        <% if (request.status == 'Pendiente') %>
+          <td><%= link_to 'Cancelar', request, class: "btn btn-danger" %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

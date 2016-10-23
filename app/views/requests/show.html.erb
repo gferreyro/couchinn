@@ -1,29 +1,76 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Usuario:</strong>
-  <%= @request.user.nombre_completo %>
+  <h3><strong>Datos del Couch <%= @request.accomodation.titulo %></strong></h3>
 </p>
 
+<% if (current_user.email == "admin@admin.com") or !(@request.user_id == current_user.id) %>
+  <p>
+    <h4>Solicitante:</h4>
+  </p>
+
+  <p>
+    <strong>Nombre:</strong>
+    <%= @request.user.nombre_completo %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= @request.user.email %>
+  </p>
+  <p>
+    <strong>Telefono:</strong>
+    <%= @request.user.telefono %>
+  </p>
+  <p>
+    <strong>Edad:</strong>
+    <%= "#{Date.today.year - @request.user.fecha_nacimiento.year} años" %>
+  </p>
+<% end %>
+
+<% if (current_user.email == "admin@admin.com") or (@request.user_id == current_user.id) %>
+  <p>
+    <h4>Dueño:</h4>
+  </p>
+
+  <p>
+    <strong>Nombre:</strong>
+    <%= @request.accomodation.user.nombre_completo %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= @request.accomodation.user.email %>
+  </p>
+  <p>
+    <strong>Telefono:</strong>
+    <%= @request.accomodation.user.telefono %>
+  </p>
+  <p>
+    <strong>Edad:</strong>
+    <%= "#{Date.today.year - @request.accomodation.user.fecha_nacimiento.year} años" %>
+  </p>
+<% end %>
+
+<br>
+
 <p>
-  <strong>Hospedaje:</strong>
-  <%= @request.accomodation.titulo %>
+  <h4>Fechas</h4>
 </p>
 
 <p>
   <strong>Desde:</strong>
-  <%= @request.from %>
-</p>
-
-<p>
+  <%= I18n.l @request.from %>
+  <br>
   <strong>Hasta:</strong>
-  <%= @request.to %>
+  <%= I18n.l @request.to %>
 </p>
 
+<% if (false) %>
 <p>
   <strong>Estado:</strong>
   <%= @request.status %>
 </p>
+<% end %>
 
-<%= link_to 'Editar', edit_request_path(@request) %> |
-<%= link_to 'Atrás', requests_path %>
+<%= link_to 'Atrás', my_requests_path, class: "btn btn-default" %>

@@ -72,7 +72,9 @@ class RequestsController < ApplicationController
     end
 
     def my_requests
-      @requests = Request.joins(:accomodation).merge(Accomodation.where(user_id:current_user.id))
+      my_couch_req = Request.joins(:accomodation).merge(Accomodation.where(user_id:current_user.id))
+      my_reqs = Request.where(user_id:current_user.id)
+      @requests = {"myCouchReq" => my_couch_req, "myReqs" => my_reqs}
     end
 
     def request_params
