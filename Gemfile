@@ -11,6 +11,8 @@ gem 'devise'
 gem 'date_validator'
 # Bootstrap Datepicker
 gem 'bootstrap-datepicker-rails'
+# Bootstrap
+gem 'anjlab-bootstrap-rails', '~> 3.0.0.3', :require => 'bootstrap-rails'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
