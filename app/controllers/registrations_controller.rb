@@ -1,4 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
+  def privacidad
+  	respond_with(@user)
+  end
 
   private
     def sign_up_params
