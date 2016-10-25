@@ -27,6 +27,12 @@ Rails.application.routes.draw do
     get :desactivar, on: :member
     get :activar, on: :member
   end
+   devise_for :users, :controllers => { registrations: 'registrations'}
+  resources :users
+  resources :accommodation_types do
+    get :desactivar, on: :privacidad
+    get :activar, on: :member
+  end
 
   resources :tipo_hospedajes
 
