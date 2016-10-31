@@ -18,6 +18,10 @@ p, ol, ul, th, td {
   vertical-align: middle;
 }
 
+h2 {
+  text-align: center;
+}
+
 pre {
   background-color: #eee;
   padding: 10px;
@@ -36,16 +40,25 @@ a {
 
 textarea, input {
   margin-bottom: 10px;
-  margin-left: 5%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 90%;
 }
 
 div {
   &.field, &.actions {
     margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
   &.navbar-header {
     text-align: right;
+  }
+  &.field_with_errors {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -66,6 +79,8 @@ div {
   padding-bottom: 0;
   margin-bottom: 20px;
   background-color: #f0f0f0;
+  margin-left: auto;
+  margin-right: auto;
   h2 {
     text-align: left;
     font-weight: bold;
