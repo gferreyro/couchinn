@@ -1,0 +1,15 @@
+<FONT FACE="courier new">
+<h2>Premium</h2>
+</FONT>
+<!--<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>-->
+
+<form action="premium" method="get">
+Nombre Completo: <input type="text" name="Nombre completo" />
+Numero de Tarjeta: <input type="number" name="Numero de Tarjeta" />
+Fecha de Expiracion: <input type="date" name="bday">
+Codigo de Seguridad : <input type="number" name="CVV" />
+<input type="reset" value="Limpiar" />
+<input type="button" onclick="premium" value="Go Premium">
+</form>
+<% end %>

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :users
 
   get 'privacidad' => 'main#privacidad'
+  get 'premium' => 'main#premium'
 
   resources :accommodation_types do
     get :desactivar, on: :member
