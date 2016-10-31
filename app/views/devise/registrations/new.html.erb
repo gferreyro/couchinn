@@ -54,7 +54,7 @@
 
   <div class="field">
     <%= f.check_box 'chkTerms', checked: false, :onchange => "btnRegister.disabled = !(btnRegister.disabled)" %>
-    Acepta los <%= link_to 'términos y condiciones de Couchinn', privacidad_path %>
+    Acepta los <%= link_to 'términos y condiciones de Couchinn', privacidad_path, target:"_blank" %>
   </div>
 
   <div class="field">
