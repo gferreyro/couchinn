@@ -35,12 +35,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :Contraseña_nueva %> <i>(Dejar en blanco si no se quiere cambiar)</i><br />
+    <%= f.label :Contraseña_nueva %> <i>(Dejar en blanco si no se quiere cambiar)</i>
     <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em>(Mínimo <%= @minimum_password_length %> caracteres)</em>
-    <% end %>
+    <% if @minimum_password_length %> <i>(Mínimo <%= @minimum_password_length %> caracteres)</i>
+      <% end %>
   </div>
 
   <div class="field">

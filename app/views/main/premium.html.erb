@@ -2,7 +2,7 @@
    <%= image_tag "premium.png", :alt => "premium", :title => "premium"%>
 </div>
 <FONT FACE="courier new">
-<h2><b>Get Premium</b></h2>
+<h2>Get Premium</h2>
 </FONT>
 
 <form action="premium" method="get">
@@ -11,8 +11,8 @@ Numero de Tarjeta: <input type="number" name="Numero de Tarjeta" />
 Fecha de Expiracion: <input type="date" name="bday">
 Codigo de Seguridad : <input type="number" name="CVV" />
 <input type="reset" value="Borrar" />
-<%= link_to 'Cancelar', accomodations_path, class: "btn-xs btn-success" %>
 <%= link_to 'Ser premium', accomodations_path, class: "btn-xs btn-success" %>
+<%= link_to 'Cancelar', accomodations_path, class: "btn-xs btn-success" %>
 <%= check_box 'chkTerms', checked: false, :onchange => "btnRegister.disabled = !(btnRegister.disabled)", :style => "float:left;" %> 
       Acepta los <%= link_to 'términos y condiciones de Couchinn', privacidad_path, target:"_blank" %>
 
