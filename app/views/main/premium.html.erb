@@ -8,8 +8,10 @@ Numero de Tarjeta: <input type="number" name="Numero de Tarjeta" />
 Fecha de Expiracion: <input type="date" name="bday">
 Codigo de Seguridad : <input type="number" name="CVV" />
 <input type="reset" value="Borrar" />
-<%= link_to 'Cancelar', my_accomodations_path, class: "btn-xs btn-success" %>
-<%= link_to 'Ser premium', my_accomodations_path, class: "btn-xs btn-success" %>
-<%= link_to 'Terminos y condiciones', privacidad_path, class: "btn-xs btn-success" %>
+<%= link_to 'Cancelar', accomodations_path, class: "btn-xs btn-success" %>
+<%= link_to 'Ser premium', accomodations_path, class: "btn-xs btn-success" %>
+<%= check_box 'chkTerms', checked: false, :onchange => "btnRegister.disabled = !(btnRegister.disabled)", :style => "float:left;" %> 
+      Acepta los <%= link_to 'términos y condiciones de Couchinn', privacidad_path, target:"_blank" %>
+
 </form>
-<!-- if user_signed_in? aceptó then poner premium true  --> 
+
