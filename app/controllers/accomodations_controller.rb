@@ -81,4 +81,5 @@ class AccomodationsController < ApplicationController
     def accomodation_params
       params.require(:accomodation).permit(:titulo, :descripcion, :accommodation_type_id, :imagen, :capacidad)
     end
+    
 end
