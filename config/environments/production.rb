@@ -81,5 +81,5 @@ Rails.application.configure do
   # Version of your assets, change this if you want to expire all your assets
   #config.assets.version = '1.0'
 
-  RAILS_ENV=production bundle exec rake assets:precompile
+  RAILS_ENV='production' bundle exec rake assets:precompile
 end
