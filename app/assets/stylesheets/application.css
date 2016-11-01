@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require scaffolds.css.scss
  *= require css/bootstrap-theme.css
  *= require css/bootstrap-theme.css.map
  *= require css/bootstrap-theme.min.css
